@@ -19,8 +19,8 @@ import type { NextRequest } from 'next/server'
 
 export default withClerkMiddleware((req: NextRequest) => {
     console.log('Middleware running');
-    const request = new MiddlewareRequest(req as any);
-    const { userId } = getAuth(request as any);
+    // const request = new MiddlewareRequest(req as any);
+    const { userId } = getAuth(req);
     console.log('Middleware userId', userId);
     return MiddlewareResponse.next();
 });
