@@ -1,6 +1,6 @@
 import { getAuth, withClerkMiddleware } from "@clerk/nextjs/server";
 import { MiddlewareRequest, MiddlewareResponse } from "@netlify/next";
-import type { NextRequest } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 
 // export default withClerkMiddleware((req: NextRequest) => {
 //     console.log('Middleware running');
@@ -19,8 +19,7 @@ import type { NextRequest } from 'next/server'
 
 export default withClerkMiddleware((req: NextRequest) => {
     console.log('Middleware running');
-    // const request = new MiddlewareRequest(req as any);
     const { userId } = getAuth(req);
     console.log('Middleware userId', userId);
-    return MiddlewareResponse.next();
+    return NextResponse.next();
 });
